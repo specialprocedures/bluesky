@@ -73,7 +73,8 @@ def fetch_list_member_profiles(client, uri: str) -> list:
     # The client.get_profiles() method is capped at 25 handles per request
     profiles = []
     for i in range(0, len(handles), 25):
-        profiles.extend(client.get_profiles(handles[i : i + 25]))
+        profile_tup = client.get_profiles(handles[i : i + 25])
+        profiles.extend(profile_tup[1])
 
     return profiles
 
